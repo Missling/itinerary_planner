@@ -1,7 +1,20 @@
 $(document).ready(function() {
-  // This is called after the document has loaded in its entirety
-  // This guarantees that any elements we bind to will exist on the page
-  // when we try to bind to them
+  $('.checkbox').on('click', function{
 
-  // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
+  });
+
+  var add_destination = function(event){
+    var itinerary_id = $('#itinerary_id').val();
+    var $winery = $(event.target).closest("winery");
+    var winery_name = $winery.find('.winery_name').value;
+
+    var request = $.ajax({
+      url: '/itineraries/'+itinerary_id+'/destinations',
+      type: "POST",
+      data: {
+        name: winery_name,
+        
+      }
+    });
+  };
 });

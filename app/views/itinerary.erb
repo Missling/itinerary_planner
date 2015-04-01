@@ -1,0 +1,14 @@
+<div class="container">
+  <h1>Itinerary</h1>
+
+  <% if @error %>
+    <p><%= @error %></p>
+  <% end %>
+
+  <form action='/itineraries' method="POST">
+    <input type="date" name="itinerary[start_date" placeholder="start_date">
+    <br>
+    <input type="date" name="itinerary[end_date]" placeholder="end_date" >
+    <input type="submit" value="Submit">
+  </form>
+</div>

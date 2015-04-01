@@ -1,0 +1,17 @@
+<div class="napa">
+  <h1>napa</h1>
+  <input id="itinerary_id" type="hidden" name="itinerary_id" value="<%= @itinerary_id %>">
+  <div class="wineries">
+  <% @wineries.businesses.each do |winery| %>
+    <div class="winery">
+      <input class="checkbox" type="checkbox" name="selected_winery">
+      <h3 class="winery_name"><%= winery.name %></h3>
+      <p class="winery_review_count"><%= winery.review_count %></p>
+      <p><%= winery.snippet_image_url %><p>
+      <p><%= winery.url %><p>
+      <p><%= winery.location.display_address %><p>
+      <br>
+    </div>
+  <% end %>
+  </div>
+</div>

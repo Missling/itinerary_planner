@@ -1,4 +1,6 @@
 require 'rubygems'
+require 'json'
+require 'pp'
 
 # All our specs should require 'spec_helper' (this file)
 
