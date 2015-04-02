@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="/css/destination.css">
+
 <div class="napa">
   <h1>Napa Winery</h1>
 
@@ -10,7 +12,7 @@
       <h3 class="winery_name"><%= winery.name %></h3>
       <p class="review_count"><%= winery.review_count %></p>
       <p class="image_url"><%= winery.snippet_image_url %><p>
-      <a class="yelp_url"><%= winery.url %><p>
+      <a class="yelp_url" href="<%winery.url %>">Yelp Link</a>
       <p class="address"><%= winery.location.display_address.join("") %><p>
       <br>
     </div>

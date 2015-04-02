@@ -1,11 +1,17 @@
-/*body { 
+body { 
   background-image: url(napa_vineyard.jpg); 
   background-repeat: no-repeat;
-}*/
+  background-size: cover;
+}
 
 button {
-  background-color: Transparent;
+  border-radius: 10px;
+  background-color: #19A3A3;
+  font-size: 120%;
+  font-family: 'Montserrat', sans-serif;
   color: black;
-  font-size: 100%;
   border-radius: 15px;
+  margin-top: 2%;
+  margin-left: 2%;*/
 }
+
