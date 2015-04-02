@@ -1,20 +1,26 @@
-$(document).ready(function() {
-  $('.checkbox').on('click', function{
+var add_destination = function(event){
+  var itinerary_id = $('#itinerary_id').val();
+  var $winery = $(event.target).closest(".winery");
+  var winery_name = $winery.find('.winery_name').text();
+  var review_count = $winery.find('.review_count').text();
+  var image_url = $winery.find('.image_url').text();
+  var yelp_url = $winery.find('.yelp_url').text();
+  var address = $winery.find('.address').text();
 
+
+  var request = $.ajax({
+    url: '/itineraries/'+itinerary_id+'/destinations',
+    type: "POST",
+    data: {
+      name: winery_name,
+      review_count: review_count,
+      image_url: image_url,
+      yelp_url: yelp_url,
+      address: address
+    }
   });
+}
 
-  var add_destination = function(event){
-    var itinerary_id = $('#itinerary_id').val();
-    var $winery = $(event.target).closest("winery");
-    var winery_name = $winery.find('.winery_name').value;
-
-    var request = $.ajax({
-      url: '/itineraries/'+itinerary_id+'/destinations',
-      type: "POST",
-      data: {
-        name: winery_name,
-        
-      }
-    });
-  };
+$(document).ready(function() {
+  $('.checkbox').on('change', add_destination);
 });

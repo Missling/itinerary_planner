@@ -51,10 +51,31 @@ end
 
 get "/itineraries/:id/destinations/new" do
   @itinerary_id = params[:id]
+ 
   @wineries = Yelp.client.search('Napa', { term: 'winery' })
+  
   erb :destination
+
 end
 
-post 'itineraries/:id/destinations' do
-  destination = Destination.new(params[:destination])
+post '/itineraries/:id/destinations' do
+  destination = Destination.new(
+    itinerary_id: params[:id],
+    name: params[:name],
+    review_count: params[:review_count],
+    image_url: params[:image_url],
+    yelp_url: params[:yelp_url],
+    address: params[:address]
+  )
+  destination.save
 end
+
+
+
+
+
+
+
+
+
+

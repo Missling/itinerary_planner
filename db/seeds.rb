@@ -1,0 +1,1 @@
+Yelp.client.search('Napa', { term: 'winery' })
