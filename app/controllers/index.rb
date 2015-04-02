@@ -2,6 +2,11 @@ get '/' do
   erb :index
 end
 
+get '/log_out' do
+  session[:user_id] = nil
+  redirect '/'
+end
+
 get '/signup/new' do
   erb :signup
 end
@@ -13,7 +18,7 @@ post '/signup' do
     session[:user_id] = user.id
     redirect '/itineraries/new'
   else
-    @error = user.errors.full_messages.join(" ")
+    @error = user.errors.full_messages
     erb :signup
   end
 end
@@ -38,10 +43,28 @@ get '/itineraries/new' do
   erb :itinerary
 end
 
+get '/itineraries/:id' do
+  @destinations = Destination.where(itinerary_id: params[:id])
+
+   @itinerary_name = Itinerary.find(params[:id]).name
+
+  erb :itinerary_index
+end
+
 post '/itineraries' do
+
   itinerary = Itinerary.new(params[:itinerary])
+
   if itinerary.save
     Invite.create(user_id: session[:user_id], itinerary_id: itinerary.id)
+
+    params[:email].each do |email|
+      if !email.empty?
+        user_id = User.find_by(email: email).id
+        invite = Invite.create(user_id: user_id, itinerary_id: itinerary.id)
+      end
+    end
+    
     redirect "/itineraries/#{itinerary.id}/destinations/new"
   else
     @error = "Itinerary could not be save"
@@ -51,11 +74,11 @@ end
 
 get "/itineraries/:id/destinations/new" do
   @itinerary_id = params[:id]
- 
+  
+  
   @wineries = Yelp.client.search('Napa', { term: 'winery' })
   
   erb :destination
-
 end
 
 post '/itineraries/:id/destinations' do

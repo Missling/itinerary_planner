@@ -10,11 +10,11 @@
       <h3 class="winery_name"><%= winery.name %></h3>
       <p class="review_count"><%= winery.review_count %></p>
       <p class="image_url"><%= winery.snippet_image_url %><p>
-      <p class="yelp_url"><%= winery.url %><p>
+      <a class="yelp_url"><%= winery.url %><p>
       <p class="address"><%= winery.location.display_address.join("") %><p>
       <br>
     </div>
   <% end %>
-  <a href="itineraries/new"><button type="button">Click here when done with selection</button></a>
+  <a href="/itineraries/<%= @itinerary_id %>"><button type="button">Click here when done with selection</button></a>
   </div>
 </div>
