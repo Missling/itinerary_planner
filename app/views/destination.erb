@@ -1,7 +1,9 @@
 <link rel="stylesheet" href="/css/destination.css">
 
+<a href="/"><button id="sign_out" type="button">Sign Out</button></a>
+
 <div class="napa">
-  <h1>Napa Winery</h1>
+  <h1>Napa Wineries</h1>
 
   <input id="itinerary_id" type="hidden" name="itinerary_id" value="<%= @itinerary_id %>">
 
@@ -9,14 +11,19 @@
   <% @wineries.businesses.each do |winery| %>
     <div class="winery">
       <input class="checkbox" type="checkbox" name="selected_winery">
-      <h3 class="winery_name"><%= winery.name %></h3>
-      <p class="review_count"><%= winery.review_count %></p>
-      <p class="image_url"><%= winery.snippet_image_url %><p>
-      <a class="yelp_url" href="<%winery.url %>">Yelp Link</a>
-      <p class="address"><%= winery.location.display_address.join("") %><p>
+      <h3 class="winery_name">
+        <a class="yelp_url" href="<%= winery.url %>" target="_blank"><%= winery.name %></a>
+      </h3>
+
+      <img src="<%= winery.rating_img_url_large %>"><span class="review_count"><%= winery.review_count %></span><span> Reviews</span>
+
+      <p class="address"><%= winery.location.display_address.join(" ") %><p>
+
+      <img class="image_url" src="<%= winery.image_url %>">
       <br>
     </div>
   <% end %>
   <a href="/itineraries/<%= @itinerary_id %>"><button type="button">Click here when done with selection</button></a>
   </div>
 </div>
+

@@ -2,7 +2,9 @@
   <link rel="stylesheet" href="/css/itinerary.css">
 </head>
 
+<a href="/"><button id="sign_out" type="button">Sign Out</button></a>
 <div class="container">
+
   <h1>Itinerary</h1>
 
   <% if @error %>
@@ -11,13 +13,17 @@
 
   <form action='/itineraries' method="POST">
     <div class="information">
-      <input type="text" name="itinerary[name]" placeholder="name">
-      <input type="text" name="itinerary[description]" placeholder="description">
+      <label for="title">Title</label>
+      <input type="text" name="itinerary[name]" id="title">
+      <label for="description">Description</label>
+      <input type="text" name="itinerary[description]" id="description">
     </div>
     <br>
     <div class="date">
-      <input type="date" name="itinerary[start_date" placeholder="start_date">
-      <input type="date" name="itinerary[end_date]" placeholder="end_date" >
+      <label for="start_date">Start Date</label>
+      <input type="date" name="itinerary[start_date" placeholder="start_date" id="start_date">
+      <label for="end_date">End Date</label>
+      <input type="date" name="itinerary[end_date]" placeholder="end_date" id="end_date">
     </div>
     <br>
 
@@ -30,5 +36,14 @@
     <br>
 
     <input type="submit" value="Submit">
-  </form>
+  </form>  
 </div>
+
+<div class = "itinerary">
+<h3> Current Itineraries </h3>
+  <% @user_itineraries.each do |itinerary| %>
+    <p><a href="/itineraries/<%= itinerary.id %>"><%= itinerary.name %></a></p>
+  <% end %>
+</div>
+
+

@@ -40,6 +40,15 @@ post '/session' do
 end
 
 get '/itineraries/new' do
+
+  @itinerary_ids = Invite.where({user_id: session[:user_id]}).map(&:itinerary_id)
+
+  @user_itineraries = User.find(session[:user_id]).itineraries
+
+  p "*" * 50
+  
+  p @user_itineraries
+
   erb :itinerary
 end
 

@@ -1,5 +1,8 @@
 <link rel="stylesheet" href="/css/index.css">
 
+<a href="/"><button id="sign_out" type="button">Sign Out</button></a>
+<a href="/itineraries/new"><button id="add_itinerary" type="button">Create Itinerary</button></a>
+
 <div class="container">
   <h1><%= @itinerary_name %></h1>
   <% @destinations.each do |destination| %>
@@ -7,4 +10,4 @@
     <p><%= destination.name %></p>
     </div>
   <% end %>
-</div>
+</div> 

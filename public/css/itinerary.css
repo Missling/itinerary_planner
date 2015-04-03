@@ -10,3 +10,18 @@ h1 {
 form {
   text-align: center;
 }
+
+.itinerary {
+  background-color: #D8A47F;
+  width: 300px;
+  height: 200px;
+  text-align: center;
+  padding-top: 5px;
+  margin-top: 5%;
+  margin-left: auto;
+  margin-right: auto; 
+  text-align: center;
+}
+
+.itineraries {
+}

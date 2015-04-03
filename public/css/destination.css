@@ -1,4 +1,20 @@
+
 .napa {
   width: 50%;
   margin: 0 auto;
+  text-align: center;
+}
+
+.winery {
+  background: #EF8354;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+}
+
+
+p {
+  color: black;
+
 }
